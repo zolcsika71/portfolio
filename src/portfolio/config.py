@@ -3,8 +3,11 @@ import os
 
 load_dotenv()  # Loads variables from .env into environment
 
-API_KEY = os.getenv("API_KEY")
+DANELFIN_API_KEY = os.getenv("DANELFIN_API_KEY")
 BASE_URL = os.getenv("BASE_URL")
 
-if not API_KEY or not BASE_URL:
-    raise ValueError("API_KEY or BASE_URL not set in .env file")
+if not DANELFIN_API_KEY:
+    raise ValueError("API_KEY not set in .env file")
+
+if not BASE_URL:
+    raise ValueError("BASE_URL not set in .env file")
