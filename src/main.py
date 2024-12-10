@@ -11,8 +11,8 @@ if __name__ == "__main__":
     print(f"Using Base URL: {BASE_URL}")
     print(f"Using Ticker: {TICKER}")
     print(f"Using Date: {DATE}")
-    print(f"Using AI Score: {TYPE}")
-    print(f"SCORE: {SCORE}")
+    print(f"Using AI Type: {TYPE}")
+    print(f"AI SCORE: {SCORE}")
 
     client = DanelfinAPIClient(api_key=DANELFIN_API_KEY, base_url=BASE_URL)
 
@@ -24,10 +24,10 @@ if __name__ == "__main__":
     display_data(f"Top 100 Tickers for {DATE}:", client.get_top_100_tickers_for_date(DATE))
 
     print("-" * 100)
-    print(f"Ticker Data for: {DATE} and {TICKER}")
+    print(f"Ticker: {TICKER} and Date: {DATE}")
     display_data("Ticker Data for date and ticker:", client.get_ticker_data_for_date(TICKER, DATE))
 
     print("-" * 100)
     print(f"Values by ScoreType on Date: {DATE}, Type: {TYPE}, Score: {SCORE}")
-    display_data(f"Values by Type: {TYPE} score: {SCORE} on {DATE}"), client.get_values_by_score_for_date(DATE, TYPE, SCORE)
+    display_data("Values by ScoreType on Date", client.get_values_by_score_for_date(DATE, TYPE, SCORE))
 

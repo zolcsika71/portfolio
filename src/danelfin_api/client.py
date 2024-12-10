@@ -47,6 +47,6 @@ class DanelfinAPIClient:
         params = {"date": date_str, "ticker": ticker}
         return self._get(params)
 
-    def get_values_by_score_for_date(self, date_str: str, scoring_type: str, score: int):
+    def get_values_by_score_for_date(self, date_str, scoring_type, score):
         params = {"date": date_str, "type": scoring_type, "score": score}
         return self._get(params)
