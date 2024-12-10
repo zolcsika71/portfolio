@@ -9,6 +9,8 @@ TICKER = os.getenv("TICKER")
 DATE = os.getenv("DATE")
 SCORE = os.getenv("SCORE")
 TYPE = os.getenv("TYPE")
+DANELFIN_MAX_TRY = os.getenv("DANELFIN_MAX_TRY")
+DANELFIN_DELAY = os.getenv("DANELFIN_DELAY")
 
 
 if not DANELFIN_API_KEY:
@@ -28,3 +30,11 @@ if not SCORE:
 
 if not TYPE:
     raise ValueError("TYPE not set in .env file")
+
+if not DANELFIN_MAX_TRY:
+    raise ValueError("DANELFIN_MAX_TRY not set in .env file")
+
+if not DANELFIN_DELAY:
+    raise ValueError("DANELFIN_DELAY not set in .env file")
+
+
