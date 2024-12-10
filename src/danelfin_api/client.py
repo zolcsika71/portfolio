@@ -1,3 +1,4 @@
+from datetime import time
 import requests
 from typing import Optional
 
@@ -34,28 +35,7 @@ class DanelfinAPIClient:
         print("Failed to retrieve data after multiple attempts.")
         return None
 
-    def _get(self, params: Optional[dict] = None):
-        url = f"{self.base_url}"
-        params = {} if params is None else params
-        try:
-            print(f"Sending GET request to {url} with params: {params}")
-            response = requests.get(self.base_url, headers=self.headers, params=params, timeout=10)
-            print(f"Request URL: {response}")
-            response.raise_for_status()
-        except requests.exceptions.HTTPError as http_err:
-            print(f"HTTP error occurred: {http_err}")
-            return None
-        except requests.exceptions.RequestException as err:
-            print(f"Error occurred: {err}")
-            return None
 
-        try:
-            data = response.json()
-        except ValueError:
-            print("Failed to parse JSON response.")
-            return None
-
-        return data
 
     def get_historical_data_for_ticker(self, ticker: str):
         params = {"ticker": ticker}

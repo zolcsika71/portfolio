@@ -7,6 +7,7 @@ DANELFIN_API_KEY = os.getenv("DANELFIN_API_KEY")
 BASE_URL = os.getenv("BASE_URL")
 TICKER = os.getenv("TICKER")
 DATE = os.getenv("DATE")
+AI_SCORE = os.getenv("AI_SCORE")
 
 
 if not DANELFIN_API_KEY:
@@ -20,3 +21,6 @@ if not TICKER:
 
 if not DATE:
     raise ValueError("DATE not set in .env file")
+
+if not AI_SCORE:
+    raise ValueError("AI_SCORE not set in .env file")
