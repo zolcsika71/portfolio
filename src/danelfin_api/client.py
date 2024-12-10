@@ -6,12 +6,12 @@ from response import delay
 
 
 class DanelfinAPIClient:
-    def __init__(self, api_key: str, base_url: str, max_retries: int = 3, delay: int = 5):
+    def __init__(self, api_key: str, base_url: str, danelfin_max_retries, danelfin_delay):
         self.api_key = api_key
         self.base_url = base_url
         self.headers = {"x-api-key": self.api_key}
-        self.max_retries = max_retries
-        self.delay = delay
+        self.max_retries = danelfin_max_retries
+        self.delay = danelfin_delay
 
     def _get(self, params: Optional[dict] = None):
         response = ""

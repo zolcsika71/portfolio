@@ -16,7 +16,7 @@ if __name__ == "__main__":
     print(f"max_retries: {DANELFIN_MAX_TRY}")
     print(f"delay: {DANELFIN_DELAY}")
 
-    client = DanelfinAPIClient(api_key=DANELFIN_API_KEY, base_url=BASE_URL, max_retries=DANELFIN_MAX_TRY, delay=DANELFIN_DELAY)
+    client = DanelfinAPIClient(api_key=DANELFIN_API_KEY, base_url=BASE_URL, danelfin_max_retries=DANELFIN_MAX_TRY, danelfin_delay=DANELFIN_DELAY)
 
     print("-" * 100)
     display_data(f"Historical Data for {TICKER}", client.get_historical_data_for_ticker(TICKER))
