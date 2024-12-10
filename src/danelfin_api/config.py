@@ -31,10 +31,4 @@ if not SCORE:
 if not TYPE:
     raise ValueError("TYPE not set in .env file")
 
-if not DANELFIN_MAX_TRY:
-    raise ValueError("DANELFIN_MAX_TRY not set in .env file")
-
-if not DANELFIN_DELAY:
-    raise ValueError("DANELFIN_DELAY not set in .env file")
-
 
