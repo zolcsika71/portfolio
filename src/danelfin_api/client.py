@@ -1,4 +1,4 @@
-from datetime import time
+import time
 import requests
 from typing import Optional
 
@@ -10,6 +10,7 @@ class DanelfinAPIClient:
         self.headers = {"x-api-key": self.api_key}
 
     def _get(self, params: Optional[dict] = None):
+        response = ""
         url = f"{self.base_url}"
         params = {} if params is None else params
         max_tries = 5
@@ -17,13 +18,12 @@ class DanelfinAPIClient:
 
         for _ in range(max_tries):
             try:
-                print(f"Sending GET request to {url} with params: {params}")
-                response = requests.get(self.base_url, headers=self.headers, params=params, timeout=10)
-                print(f"Response Code: {response.status_code}")
-                response.raise_for_status()
-                return response.json()
+                response = requests.get(url, headers=self.headers, params=params, timeout=10)
+                if response.status_code == 200:
+                    print("Response Code: OK")
+                    return response.json()
             except requests.exceptions.HTTPError as e:
-                if response.status_code == 429:
+                if response and response.status_code == 429:
                     print("Rate limit exceeded. Retrying in", delay, "seconds...")
                     time.sleep(delay)
                     delay *= 2
@@ -34,8 +34,6 @@ class DanelfinAPIClient:
 
         print("Failed to retrieve data after multiple attempts.")
         return None
-
-
 
     def get_historical_data_for_ticker(self, ticker: str):
         params = {"ticker": ticker}
@@ -49,6 +47,6 @@ class DanelfinAPIClient:
         params = {"date": date_str, "ticker": ticker}
         return self._get(params)
 
-    def get_values_by_score_for_date(self, date_str: str, aiscore: int):
-        params = {"date": date_str, "aiscore": str(aiscore)}
+    def get_values_by_score_for_date(self, date_str: str, scoring_type: str, score: int):
+        params = {"date": date_str, "type": scoring_type, "score": score}
         return self._get(params)
