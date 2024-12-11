@@ -7,15 +7,16 @@ if __name__ == "__main__":
         print(f"\n{title}:")
         print(data)
 
+
+    client = DanelfinAPIClient(DANELFIN_API_KEY, BASE_URL)
+
     print("Welcome to the Danelfin API Client!")
     print(f"Using Base URL: {BASE_URL}")
     print(f"Using Ticker: {TICKER}")
     print(f"Using Date: {DATE}")
     print(f"Using AI Type: {TYPE}")
     print(f"AI SCORE: {SCORE}")
-
-    client = DanelfinAPIClient(api_key=DANELFIN_API_KEY, base_url=BASE_URL)
-
+    
     print("-" * 100)
     display_data(f"Historical Data for {TICKER}", client.get_historical_data_for_ticker(TICKER))
 
@@ -30,4 +31,11 @@ if __name__ == "__main__":
     print("-" * 100)
     print(f"Values by ScoreType on Date: {DATE}, Type: {TYPE}, Score: {SCORE}")
     display_data("Values by ScoreType on Date", client.get_values_by_score_for_date(DATE, TYPE, SCORE))
+
+
+
+
+
+
+
 

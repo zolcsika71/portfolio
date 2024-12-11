@@ -14,6 +14,9 @@ class DanelfinAPIClient:
         url = f"{self.base_url}"
         params = {} if params is None else params
         response = None
+        print(f"URL: {url}")
+        print(f"Headers: {self.headers}")
+        print(f"Params: {params}")
         for _ in range(5):
             try:
                 response = requests.get(url, headers=self.headers, params=params, timeout=10)
@@ -45,3 +48,6 @@ class DanelfinAPIClient:
     def get_values_by_score_for_date(self, date_str: str, scoring_type: str, score: float):
         params = {"date": date_str, "type": scoring_type, "score": score}
         return self._get(params)
+
+
+
